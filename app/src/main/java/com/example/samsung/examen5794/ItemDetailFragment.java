@@ -64,7 +64,15 @@ public class ItemDetailFragment extends Fragment {
         if (mItem != null) {
             ((TextView) rootView.findViewById(R.id.item_detail)).setText(mItem.details);
             //instanciamos el boton del fragment
-            Button Limpiar= (Button) rootView.findViewById(R.id.bLimpiar);
+            Button limpiar= (Button) rootView.findViewById(R.id.bLimpiar);
+            //Al boton instanciamos un onclicklistener, e implementa el método por defecto onClick
+            limpiar.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Aqui metemos el metodo creado
+                    Limpieza();
+                }
+            });
 
         }
 
@@ -72,6 +80,9 @@ public class ItemDetailFragment extends Fragment {
     }
     //Se crea el metodo para borrar el textView del fragment
     public void Limpieza(){
-
+        //Instanciamos un textView, y lo unimos con el del detail.
+        TextView tx= (TextView) getView().findViewById(R.id.item_detail);
+        //Hacemos que sobrescriba lo escrito, pero esta vez no escribirá nada
+        tx.setText(" ");
     }
 }
